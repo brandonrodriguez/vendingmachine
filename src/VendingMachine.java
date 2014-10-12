@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -93,26 +95,21 @@ public class VendingMachine {
 	 * in from a file to make it more dynamic.
 	 */
 	public void initProducts() {
-		Product p1 = new Product("Cheetos ", 75);
-		im.addProduct(p1, 10);
-		Product p2 = new Product("Goldfish", 75);
-		im.addProduct(p2, 10);
-		Product p3 = new Product("Pretzels", 50);
-		im.addProduct(p3, 7);
-		Product p4 = new Product("Jolly Ranchers", 60);
-		im.addProduct(p4, 4);
-		Product p5 = new Product("Coca-Cola", 100);
-		im.addProduct(p5, 12);
-		Product p6 = new Product("Snickers", 50);
-		im.addProduct(p6, 8);
-		Product p7 = new Product("Stride Gum", 65);
-		im.addProduct(p7, 3);
-		Product p8 = new Product("Beef Jerky", 140);
-		im.addProduct(p8, 1);
-		Product p9 = new Product("Chex Mix", 70);
-		im.addProduct(p9, 1);
-		Product p10 = new Product("Popcorn ", 35);
-		im.addProduct(p10, 6);
+		Scanner snackFile;
+		try {
+			snackFile = new Scanner(new File("snacks.txt"));
+			while (snackFile.hasNextLine()) {
+				String snackName = snackFile.next();
+				snackName = snackName.replace('_', ' ');
+				int snackCost = snackFile.nextInt();
+				int snackQuantity = snackFile.nextInt();
+				Product p = new Product(snackName, snackCost);
+				im.addProduct(p, snackQuantity);
+			}
+			snackFile.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

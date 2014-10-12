@@ -1,0 +1,10 @@
+Cheetos 75 10
+Goldfish 75 10
+Pretzels 50 7
+Jolly_Ranchers 60 4
+Coca-Cola 100 12
+Snickers 50 8
+Stride_Gum 65 3
+Beef_Jerky 140 1
+Chex_Mix 70 1
+Popcorn 35 6
